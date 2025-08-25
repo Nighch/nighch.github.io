@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="個人介紹頁範本 - 自我介紹、技能、作品、聯絡方式" />
+  <title>您的名字｜個人簡介</title>
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --card: #12151a;
+      --text: #e8edf1;
+      --muted: #a9b2ba;
+      --accent: #6aa6ff;
+      --ring: rgba(106,166,255,.35);
+      --ok: #48d597;
+      --warn: #f6c34a;
+      --danger: #ff6a7a;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f7f8fb;
+        --card: #ffffff;
+        --text: #0f172a;
+        --muted: #5b6677;
+        --accent: #2f6fff;
+        --ring: rgba(47,111,255,.25);
+        --shadow: 0 8px 24px rgba(15,23,42,.08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(106,166,255,.12), transparent 60%),
+                  radial-gradient(1000px 600px at -10% 110%, rgba(72,213,151,.10), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin-inline:auto; padding:32px;}
+
+    /* Header */
+    header{
+      display:grid; gap:24px; align-items:center;
+      grid-template-columns: 140px 1fr; 
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+      padding:24px; border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:saturate(120%) blur(6px);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .avatar{
+      width:120px; aspect-ratio:1/1; border-radius:50%;
+      background:linear-gradient(135deg, var(--accent), var(--ok));
+      padding:4px; display:grid; place-items:center;
+      box-shadow:0 10px 30px rgba(0,0,0,.2);
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover; border-radius:50%; display:block}
+    .headline h1{margin:0; font-size:clamp(26px, 3.6vw, 42px)}
+    .headline p{margin:.25rem 0 0; color:var(--muted)}
+    .tags{margin-top:10px; display:flex; flex-wrap:wrap; gap:8px}
+    .tag{padding:6px 10px; border-radius:999px; background:var(--card); color:var(--text); border:1px solid rgba(255,255,255,.06); font-size:13px}
+
+    /* Quick actions */
+    .actions{margin-left:auto; display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      appearance:none; border:1px solid rgba(255,255,255,.1); background:var(--card); color:var(--text);
+      padding:10px 14px; border-radius:12px; cursor:pointer; transition:transform .06s ease, box-shadow .2s ease, border-color .2s;
+      box-shadow:var(--shadow);
+    }
+    .btn:hover{transform:translateY(-1px); border-color:var(--ring)}
+    .btn.primary{background:linear-gradient(135deg, var(--accent), #8bc1ff); color:#fff; border:none}
+
+    main{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px; margin-top:24px}
+    section{background:var(--card); padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.06)}
+    section h2{margin:0 0 14px; font-size:20px}
+
+    .about p{margin:0}
+
+    .list{display:grid; gap:12px}
+    .item{display:flex; gap:12px; padding:12px; border-radius:12px; background:rgba(255,255,255,.03); border:1px dashed rgba(255,255,255,.08)}
+    .item strong{display:block}
+    .item small{color:var(--muted)}
+
+    .skills{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{
+      font-size:13px; padding:8px 10px; border-radius:999px; background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1)
+    }
+
+    .grid{display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:14px}
+    .card{padding:14px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
+    .card h3{margin:.2rem 0 .25rem; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+
+    .contact a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.03)}
+
+    footer{margin:24px 0 40px; color:var(--muted); text-align:center}
+
+    /* Responsive */
+    @media (max-width: 860px){
+      header{grid-template-columns: 1fr; text-align:center}
+      .actions{justify-content:center; margin:0}
+      main{grid-template-columns: 1fr}
+      .avatar{margin-inline:auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Header -->
+    <header aria-label="個人名片">
+      <div class="avatar" aria-hidden="true">
+        <!-- 替換為個人照片（推薦 600x600） -->
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="個人頭像" />
+      </div>
+      <div class="headline">
+        <h1>您的名字 Name</h1>
+        <p>職稱 / 領域 · 城市, 國家</p>
+        <div class="tags">
+          <span class="tag">#前端工程</span>
+          <span class="tag">#UI/UX</span>
+          <span class="tag">#Side Project</span>
+        </div>
+      </div>
+      <div class="actions" role="group" aria-label="快速操作">
+        <a class="btn primary" href="#contact">聯絡我</a>
+        <a class="btn" href="cv.pdf" download>下載履歷 PDF</a>
+        <button class="btn" id="toggleTheme" type="button">切換主題</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- 左欄：關於、作品、經歷 -->
+      <div class="left">
+        <section class="about" aria-labelledby="about-title">
+          <h2 id="about-title">關於我</h2>
+          <p>
+            在此撰寫 2–4 句自我介紹：核心技能、興趣、解決過的問題與價值觀。
+            例如：我是一名注重可用性與效能的前端工程師，擅長把複雜流程變成直覺體驗，近年亦投入可及性與設計系統的建立。
+          </p>
+        </section>
+
+        <section aria-labelledby="projects-title">
+          <h2 id="projects-title">精選作品</h2>
+          <div class="grid">
+            <article class="card">
+              <small>2024 · 個人專案</small>
+              <h3>作品名稱 A</h3>
+              <p>一句話說明目的與成效。範例：把圖片壓縮效率提升 40%，每月節省 20GB 流量。</p>
+              <p><a href="#">查看 Demo</a></p>
+            </article>
+            <article class="card">
+              <small>2023 · 團隊專案</small>
+              <h3>作品名稱 B</h3>
+              <p>關鍵貢獻與使用技術。範例：主導元件化重構，將 MR 時程縮短 30%。</p>
+              <p><a href="#">GitHub</a></p>
+            </article>
+            <article class="card">
+              <small>2022 · 客戶案</small>
+              <h3>作品名稱 C</h3>
+              <p>成果數據或使用者回饋。範例：NPS +25，月活提升 18%。</p>
+              <p><a href="#">案例頁</a></p>
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="exp-title">
+          <h2 id="exp-title">經歷</h2>
+          <div class="list">
+            <div class="item">
+              <div>
+                <strong>公司 / 組織 · 職稱</strong>
+                <small>2022 — 至今 · 城市</small>
+                <div>亮點：帶領 3 人小組重構前端架構、建立 CI/CD、提升 Lighthouse 分數至 95+。</div>
+              </div>
+            </div>
+            <div class="item">
+              <div>
+                <strong>公司 / 學校 · 身份</strong>
+                <small>2020 — 2022 · 城市</small>
+                <div>亮點：發表 2 篇技術文章、舉辦內部培訓、導入可及性標準。</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 右欄：技能、聯絡、連結 -->
+      <aside class="right">
+        <section aria-labelledby="skills-title">
+          <h2 id="skills-title">技能</h2>
+          <div class="skills">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">React</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">Figma</span>
+            <span class="chip">Git</span>
+          </div>
+        </section>
+
+        <section id="contact" class="contact" aria-labelledby="contact-title">
+          <h2 id="contact-title">聯絡方式</h2>
+          <div class="list">
+            <div class="item" role="group" aria-label="Email">
+              <a href="mailto:you@example.com" aria-label="寄信到 you@example.com">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm0 0 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                you@example.com
+              </a>
+            </div>
+            <div class="item" role="group" aria-label="電話">
+              <a href="tel:+886-900-000-000">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v2a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.14 9.81 19.79 19.79 0 0 1 .07 1.18 2 2 0 0 1 2.05-.99h2a2 2 0 0 1 2 1.72c.12.93.33 1.85.63 2.73a2 2 0 0 1-.45 2.11L5.49 7.6a16 16 0 0 0 6.91 6.91l1.99-1.74a2 2 0 0 1 2.11-.45c.88.3 1.8.51 2.73.63A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                +886-900-000-000
+              </a>
+            </div>
+            <div class="item" role="group" aria-label="地點">
+              <div>
+                <strong>所在地</strong>
+                <small>台北，台灣</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="links-title">
+          <h2 id="links-title">社群與連結</h2>
+          <div class="list">
+            <div class="item"><a href="#">GitHub</a></div>
+            <div class="item"><a href="#">LinkedIn</a></div>
+            <div class="item"><a href="#">個人部落格</a></div>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      © <span id="year"></span> 您的名字 · 本頁以純 HTML/CSS 製作
+    </footer>
+  </div>
+
+  <script>
+    // 年份與主題切換
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('toggleTheme');
+    const cls = 'light-mode';
+    toggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle(cls);
+      localStorage.setItem('prefersLight', document.documentElement.classList.contains(cls));
+    });
+    // 依儲存偏好載入
+    if(localStorage.getItem('prefersLight') === 'true'){
+      document.documentElement.classList.add(cls);
+    }
+
+    // 簡易鍵盤導覽聚焦樣式
+    let hadKeyboardEvent = false;
+    const mod = () => document.body.classList.toggle('kbd', hadKeyboardEvent);
+    window.addEventListener('keydown', e=>{ if(e.key==='Tab'){ hadKeyboardEvent = true; mod(); }});
+    window.addEventListener('mousedown', ()=>{ hadKeyboardEvent = false; mod(); });
+  </script>
+  <style>
+    /* 額外：鍵盤導覽可視化、手動亮色模式 */
+    .kbd :focus{ outline: 2px solid var(--accent); outline-offset: 2px; box-shadow: 0 0 0 6px var(--ring);}
+    .light-mode{ filter: invert(1) hue-rotate(180deg); }
+    .light-mode img{ filter: invert(1) hue-rotate(180deg); }
+  </style>
+</body>
+</html>
